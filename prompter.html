@@ -27,7 +27,7 @@
     <meta name="twitter:image" content="https://silverbytegames.github.io/assets/images/prompter-banner.jpg">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
 
     <!-- Schema.org MobileApplication JSON-LD -->
     <script type="application/ld+json">
@@ -58,10 +58,16 @@
     <header class="site-header">
         <div class="container">
             <nav class="navbar" aria-label="Main Navigation">
-                <a href="index.html" class="brand-link" aria-label="Silverbyte Studio Home">
-                    <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" class="brand-logo" width="36" height="36">
-                    <span class="brand-title">Silverbyte Studio</span>
-                </a>
+                <div class="navbar-start">
+                    <a href="index.html" class="brand-link" aria-label="Silverbyte Studio Home">
+                        <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" class="brand-logo" width="36" height="36">
+                        <span class="brand-title">Silverbyte Studio</span>
+                    </a>
+                    <nav class="audience-switch header-audience" aria-label="Project category">
+                        <a href="index.html" class="audience-option active" aria-current="page">B2C</a>
+                        <a href="business.html" class="audience-option">B2B</a>
+                    </nav>
+                </div>
 
                 <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -77,6 +83,7 @@
                     <li><a href="index.html#desktop-apps" class="nav-link">Desktop</a></li>
                     <li><a href="index.html#about" class="nav-link">About</a></li>
                     <li><a href="index.html#support" class="nav-link">Support</a></li>
+                    <li><a href="business.html" class="nav-link">For Business</a></li>
                     <li class="nav-dropdown">
                         <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                             <span>Privacy Policies</span>

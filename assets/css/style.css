@@ -43,6 +43,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -51,6 +53,8 @@ body {
     color: var(--text-main);
     line-height: 1.65;
     min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-tap-highlight-color: rgba(99, 102, 241, 0.18);
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -65,8 +69,8 @@ body::before {
     top: -150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    height: 450px;
+    width: min(800px, 140vw);
+    height: min(450px, 60vh);
     background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 80%);
     pointer-events: none;
     z-index: 0;
@@ -83,11 +87,35 @@ img {
     display: block;
 }
 
+/* body is a column flex container, so its children default to min-width:auto and
+   get inflated by any wide descendant (a data table, a long package id). Pinning
+   them to 0 keeps the page exactly as wide as the viewport on every device. */
+body > header,
+body > main,
+body > footer,
+body > section,
+body > div,
+body > nav {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Package ids, URLs and hashes must wrap rather than widen the page. */
+code,
+samp,
+kbd {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .container {
     width: 100%;
-    max-width: 1080px;
+    min-width: 0;
+    max-width: min(1080px, 100%);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+    padding-left: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-left));
+    padding-right: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-right));
 }
 
 /* Header & Navigation */
@@ -653,7 +681,7 @@ header.site-header {
 
 .game-features-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
     gap: 0.75rem;
     margin: 0.5rem 0;
     list-style: none;
@@ -684,7 +712,7 @@ header.site-header {
 /* Pipeline / Teaser Grid */
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 1.5rem;
 }
 
@@ -737,7 +765,7 @@ header.site-header {
 /* Studio Pillars Section */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1.5rem;
 }
 
@@ -791,7 +819,7 @@ header.site-header {
 
 .compliance-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -830,6 +858,7 @@ header.site-header {
 
 .code-snippet {
     display: block;
+    overflow-wrap: anywhere;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-sm);
@@ -862,6 +891,7 @@ header.site-header {
 }
 
 .contact-email-text {
+    overflow-wrap: anywhere;
     font-size: 1.15rem;
     font-weight: 600;
     color: #ffffff;
@@ -936,9 +966,13 @@ footer.site-footer {
 
 /* Legal Documents Layout (Privacy Policy & Terms) */
 .legal-container {
-    max-width: 840px;
+    width: 100%;
+    min-width: 0;
+    max-width: min(840px, 100%);
     margin: 0 auto;
-    padding: 3rem 1.5rem 6rem;
+    padding: 3rem clamp(1rem, 4vw, 1.5rem) 6rem;
+    padding-left: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-left));
+    padding-right: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-right));
 }
 
 .legal-header {
@@ -1000,6 +1034,7 @@ footer.site-footer {
 }
 
 .legal-content a {
+    overflow-wrap: anywhere;
     color: #818cf8;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -1011,6 +1046,7 @@ footer.site-footer {
 }
 
 .legal-content code {
+    overflow-wrap: anywhere;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #e2e8f0;
@@ -1023,7 +1059,10 @@ footer.site-footer {
 /* Legal Tables */
 .table-responsive {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
     margin: 1.5rem 0 2rem;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
@@ -1178,9 +1217,13 @@ footer.site-footer {
 
 /* Product Detail Container */
 .product-page-container {
-    max-width: 960px;
+    width: 100%;
+    min-width: 0;
+    max-width: min(960px, 100%);
     margin: 0 auto;
-    padding: 1.5rem 1.5rem 5rem;
+    padding: 1.5rem clamp(1rem, 4vw, 1.5rem) 5rem;
+    padding-left: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-left));
+    padding-right: max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-right));
 }
 
 .product-hero {
@@ -1271,7 +1314,7 @@ footer.site-footer {
 
 .product-features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1.25rem;
 }
 
@@ -1351,7 +1394,7 @@ footer.site-footer {
 /* Streamlined Compact Cards for Home Page */
 .portal-showcase-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 1.5rem;
 }
 
@@ -1456,3 +1499,920 @@ footer.site-footer {
     }
 }
 
+
+/* Audience Switch (B2C / B2B) */
+.audience-switch {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0.25rem;
+    padding: 0.3rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    max-width: 100%;
+}
+
+.audience-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.audience-option:hover {
+    color: var(--text-main);
+}
+
+.audience-option.active {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.audience-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.audience-option.active .audience-tag {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.b2b-empty {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    background: var(--bg-surface-card);
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-lg);
+}
+
+.b2b-empty h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.b2b-empty p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 480px) {
+    .audience-option {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.78rem;
+        gap: 0.3rem;
+    }
+
+    .audience-tag {
+        font-size: 0.62rem;
+    }
+}
+
+/* Hero Banner (front page) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hero-banner {
+    --hero-banner-width: min(1200px, calc(100vw - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    display: block;
+    width: var(--hero-banner-width);
+    margin: 0 calc(50% - var(--hero-banner-width) / 2);
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: #f2efe8;
+    border: 1px solid rgba(220, 215, 203, 0.45);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    transition: var(--transition);
+    text-decoration: none;
+    position: relative;
+}
+
+.hero-banner svg,
+.hero-banner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-banner:hover {
+    border-color: rgba(220, 215, 203, 0.85);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+.hero-banner:hover svg,
+.hero-banner:hover img {
+    transform: scale(1.012);
+}
+
+.hero-banner:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+    .hero-banner {
+        border-radius: var(--radius-md);
+    }
+}
+
+/* Header audience switch (B2C / B2B) */
+.navbar-start {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.header-audience {
+    margin: 0;
+    padding: 0.2rem;
+    gap: 0.15rem;
+    flex-shrink: 0;
+}
+
+.header-audience .audience-option {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Front-page hero is just the banner, so it needs less top space */
+.hero:has(.hero-banner) {
+    padding-top: 2.5rem;
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.875rem;
+        white-space: nowrap;
+    }
+}
+
+/* Tablet widths: keep the logo but drop the name so the header fits on one line */
+@media (min-width: 769px) and (max-width: 960px) {
+    .brand-title {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero:has(.hero-banner) {
+        padding-top: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-start {
+        gap: 0.6rem;
+    }
+
+    .brand-link {
+        gap: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .brand-logo {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* ==========================================================================
+   Responsive Layer — phones, phablets, tablets, foldables & dual screens
+   Everything below is override-only and intentionally last in the cascade.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Touch & pointer adaptations (device capability, not width)
+   -------------------------------------------------------------------------- */
+@media (hover: none) {
+    /* Hover-opened dropdowns are a trap on touch: the click handler owns them. */
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu {
+        display: none;
+    }
+
+    .nav-dropdown.open .dropdown-menu {
+        display: flex;
+    }
+
+    .nav-dropdown:hover .dropdown-chevron,
+    .nav-dropdown:focus-within .dropdown-chevron {
+        transform: none;
+    }
+
+    .nav-dropdown.open .dropdown-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Lift-on-hover sticks after a tap, so drop it for touch pointers. */
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-googleplay:hover,
+    .btn-badge:hover,
+    .portal-card:hover,
+    .feature-box:hover,
+    .product-feature-card:hover,
+    .game-mini-card:hover {
+        transform: none;
+    }
+
+    .game-featured-card:hover .game-banner,
+    .portal-card:hover .portal-card-banner img,
+    .hero-banner:hover img,
+    .hero-banner:hover svg {
+        transform: none;
+    }
+}
+
+/* Comfortable thumb targets on touch screens (WCAG 2.5.8 / 44px) */
+@media (pointer: coarse) {
+    .btn,
+    .btn-badge,
+    .mobile-menu-btn {
+        min-height: 44px;
+    }
+
+    .btn-sm,
+    .btn-badge-sm {
+        min-height: 40px;
+    }
+
+    .mobile-menu-btn {
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dropdown-item {
+        min-height: 48px;
+    }
+
+    .audience-switch:not(.header-audience) .audience-option {
+        min-height: 40px;
+    }
+
+    /* Footer link columns are a primary way around the site on a phone. */
+    .footer-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .breadcrumb-item a,
+    .breadcrumb-item.current {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+    }
+
+    .brand-link {
+        min-height: 44px;
+    }
+
+    /* Standalone links in spec rows, not prose — safe to grow. */
+    .specs-value a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+    }
+
+    .header-audience .audience-option {
+        min-height: 40px;
+    }
+}
+
+/* Tactile press feedback where hover cues don't exist */
+@media (hover: none) {
+    .btn:active,
+    .btn-badge:active,
+    .audience-option:active {
+        transform: scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .btn:active,
+    .btn-badge:active,
+    .audience-option:active,
+    .portal-card:hover,
+    .feature-box:hover,
+    .product-feature-card:hover,
+    .game-mini-card:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-badge:hover,
+    .hero-banner:hover img,
+    .hero-banner:hover svg,
+    .portal-card:hover .portal-card-banner img {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet — portrait tablets and small laptops (769px - 1024px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section {
+        padding: 3.25rem 0;
+    }
+
+    .product-hero-body {
+        padding: 1.85rem;
+    }
+
+    .compliance-hub {
+        padding: 1.85rem;
+    }
+
+    .contact-card {
+        padding: 2rem;
+    }
+}
+
+/* The header runs out of room before the layout does: shed the switch first. */
+@media (min-width: 769px) and (max-width: 860px) {
+    .header-audience {
+        display: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Phablet & tablet portrait — the hamburger range (<= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* A 7-item menu plus a nested dropdown is taller than a landscape phone. */
+    .nav-links {
+        max-height: calc(100vh - 60px);
+        max-height: calc(100dvh - 60px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+    }
+
+    .nav-links > li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        width: 100%;
+    }
+
+    /* The sliding underline reads as a glitch on a stacked menu. */
+    .nav-link::after {
+        display: none;
+    }
+
+    .dropdown-menu {
+        max-height: 50vh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .brand-link {
+        min-width: 0;
+    }
+
+    .brand-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero p.lead {
+        font-size: 1.05rem;
+    }
+
+    /* Banners get taller relative to width so artwork stays readable. */
+    .product-hero-banner {
+        aspect-ratio: 16 / 9;
+        max-height: none;
+    }
+
+    .portal-card-banner {
+        max-height: none;
+    }
+
+    .product-hero-body {
+        padding: 1.5rem;
+    }
+
+    .product-header-main {
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .product-icon-large {
+        width: 68px;
+        height: 68px;
+        border-radius: 17px;
+    }
+
+    .product-tagline {
+        font-size: 1rem;
+    }
+
+    .product-section {
+        margin-bottom: 2.25rem;
+    }
+
+    .product-section-title {
+        font-size: 1.25rem;
+    }
+
+    .compliance-hub {
+        padding: 1.5rem;
+    }
+
+    .contact-card {
+        padding: 1.85rem 1.35rem;
+    }
+
+    .legal-container {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    .legal-content h2 {
+        font-size: 1.3rem;
+        margin-top: 2rem;
+    }
+
+    footer.site-footer {
+        padding: 2.5rem 0 max(2rem, env(safe-area-inset-bottom));
+    }
+
+    .footer-links {
+        gap: 0.85rem 1.25rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Large phones (<= 640px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+    .hero {
+        padding: 3rem 0 2.25rem;
+    }
+
+    .hero p.lead {
+        font-size: 1rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .section {
+        padding: 2.75rem 0;
+    }
+
+    .games-grid,
+    .features-grid,
+    .product-features-grid,
+    .portal-showcase-grid,
+    .compliance-grid {
+        gap: 1.1rem;
+    }
+
+    .game-features-list {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-card-body,
+    .product-feature-card,
+    .game-mini-card,
+    .feature-box {
+        padding: 1.35rem;
+    }
+
+    .portal-card-header {
+        gap: 0.85rem;
+    }
+
+    .product-actions-bar,
+    .game-card-actions {
+        gap: 0.65rem;
+    }
+
+    /* Tables stay scrollable instead of collapsing into unreadable columns.
+       A permanently visible slim scrollbar is the cue that there is more to see. */
+    .legal-table {
+        min-width: 480px;
+    }
+
+    .table-responsive {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(99, 102, 241, 0.65) rgba(255, 255, 255, 0.06);
+    }
+
+    .table-responsive::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.65);
+        border-radius: var(--radius-full);
+    }
+
+    .legal-table th,
+    .legal-table td {
+        padding: 0.75rem 0.85rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Standard phones (<= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .hero {
+        padding: 2.5rem 0 2rem;
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .section-title {
+        font-size: 1.45rem;
+    }
+
+    /* Primary actions go full width — easier to hit, no ragged wrapping. */
+    .hero-actions,
+    .product-actions-bar,
+    .contact-channels,
+    .game-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions > .btn,
+    .hero-actions > .btn-badge,
+    .product-actions-bar > .btn,
+    .product-actions-bar > .btn-badge,
+    .contact-channels > .btn,
+    .contact-channels > .btn-badge,
+    .game-card-actions > .btn,
+    .game-card-actions > .btn-badge {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .portal-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+    }
+
+    .portal-card-footer > .btn,
+    .portal-card-footer > .btn-badge {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .portal-card-footer > .badge {
+        align-self: flex-start;
+    }
+
+    .product-icon-large {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+    }
+
+    .portal-card-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+    }
+
+    .game-icon-large {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+    }
+
+    .product-title-group h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact-email-text {
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .contact-email-row {
+        gap: 0.6rem;
+        margin: 1.25rem 0;
+    }
+
+    .legal-content p,
+    .legal-content li {
+        font-size: 0.94rem;
+    }
+
+    .legal-content ul,
+    .legal-content ol {
+        margin-left: 1.15rem;
+    }
+
+    .breadcrumb-list {
+        font-size: 0.8rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Compact phones (<= 400px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 400px) {
+    .header-audience .audience-option {
+        padding: 0.2rem 0.45rem;
+        font-size: 0.66rem;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+    }
+
+    .product-section-title {
+        font-size: 1.15rem;
+    }
+
+    .portal-card-body,
+    .product-feature-card,
+    .game-mini-card,
+    .feature-box {
+        padding: 1.15rem;
+    }
+
+    .specs-row {
+        padding: 0.8rem 0.95rem;
+    }
+
+    .badge {
+        font-size: 0.72rem;
+        padding: 0.25rem 0.65rem;
+    }
+
+    .audience-switch:not(.header-audience) {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+    }
+
+    .code-snippet {
+        font-size: 0.74rem;
+    }
+
+    /* Titles wrap to 2-3 lines here, so a vertically centred icon floats oddly. */
+    .portal-card-header,
+    .game-mini-top {
+        align-items: flex-start;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Narrow phones & folded foldables (<= 360px, down to ~280px cover screens)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+    .brand-title {
+        display: none;
+    }
+
+    .navbar-start {
+        gap: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.85rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .product-title-group h1 {
+        font-size: 1.3rem;
+    }
+
+    .portal-card-title,
+    .game-mini-card h4 {
+        font-size: 1.05rem;
+    }
+
+    .portal-card-body,
+    .product-feature-card,
+    .game-mini-card,
+    .feature-box,
+    .compliance-hub,
+    .product-hero-body,
+    .contact-card {
+        padding: 1rem;
+    }
+
+    .btn,
+    .btn-badge {
+        padding-inline: 0.9rem;
+    }
+
+    .btn-badge-title {
+        font-size: 0.88rem;
+    }
+
+    .tag-list {
+        gap: 0.35rem;
+    }
+
+    .legal-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .legal-content h2 {
+        font-size: 1.15rem;
+    }
+
+    .footer-links {
+        gap: 0.65rem 1rem;
+    }
+
+}
+
+/* --------------------------------------------------------------------------
+   Ultra-narrow — folded cover screens and small split-screen panes (<= 330px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 330px) {
+    /* No usable room beside a 46px icon: give the title the whole row. */
+    .portal-card-header,
+    .game-mini-top,
+    .product-header-main,
+    .game-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+    }
+
+    .contact-email-text {
+        font-size: 0.9rem;
+    }
+
+    .legal-table {
+        min-width: 420px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Short viewports — phones in landscape, split-screen, Stage Manager
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    /* A sticky bar costs too much of a 360px-tall viewport. */
+    header.site-header {
+        position: static;
+    }
+
+    .navbar {
+        height: 54px;
+    }
+
+    .nav-links {
+        top: 54px;
+        max-height: calc(100vh - 54px);
+        max-height: calc(100dvh - 54px);
+    }
+
+    .hero {
+        padding: 1.75rem 0 1.5rem;
+    }
+
+    .hero:has(.hero-banner) {
+        padding-top: 1rem;
+    }
+
+    .section {
+        padding: 2rem 0;
+    }
+
+    .hero-banner {
+        aspect-ratio: 21 / 9;
+    }
+
+    .product-hero-banner {
+        aspect-ratio: 21 / 9;
+    }
+
+    .dropdown-menu {
+        max-height: 60vh;
+    }
+
+    .nav-links {
+        gap: 0.35rem;
+        padding-top: 0.85rem;
+    }
+
+    .nav-link {
+        min-height: 40px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Foldables & dual-screen — keep content out of the hinge
+   -------------------------------------------------------------------------- */
+@media (horizontal-viewport-segments: 2) {
+    .games-grid,
+    .features-grid,
+    .product-features-grid,
+    .portal-showcase-grid,
+    .compliance-grid,
+    .game-features-list {
+        grid-template-columns: 1fr;
+    }
+
+    .container,
+    .legal-container,
+    .product-page-container {
+        max-width: env(viewport-segment-width 0 0, 100%);
+    }
+
+    .hero-banner {
+        --hero-banner-width: 100%;
+        margin-inline: 0;
+    }
+}
+
+@media (vertical-viewport-segments: 2) {
+    header.site-header {
+        position: static;
+    }
+
+    .hero-banner {
+        --hero-banner-width: 100%;
+        margin-inline: 0;
+    }
+}

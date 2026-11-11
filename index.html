@@ -28,7 +28,7 @@
     <meta name="twitter:image" content="https://silverbytegames.github.io/assets/images/triple-tiles-banner.jpg">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -53,10 +53,16 @@
     <header class="site-header">
         <div class="container">
             <nav class="navbar" aria-label="Main Navigation">
-                <a href="index.html" class="brand-link" aria-label="Silverbyte Studio Home">
-                    <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" class="brand-logo" width="36" height="36">
-                    <span class="brand-title">Silverbyte Studio</span>
-                </a>
+                <div class="navbar-start">
+                    <a href="index.html" class="brand-link" aria-label="Silverbyte Studio Home">
+                        <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" class="brand-logo" width="36" height="36">
+                        <span class="brand-title">Silverbyte Studio</span>
+                    </a>
+                    <nav class="audience-switch header-audience" aria-label="Project category">
+                        <a href="index.html" class="audience-option active" aria-current="page">B2C</a>
+                        <a href="business.html" class="audience-option">B2B</a>
+                    </nav>
+                </div>
 
                 <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,6 +78,7 @@
                     <li><a href="#desktop-apps" class="nav-link">Desktop</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#support" class="nav-link">Support</a></li>
+                    <li><a href="business.html" class="nav-link">For Business</a></li>
                     <li class="nav-dropdown">
                         <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                             <span>Privacy Policies</span>
@@ -136,38 +143,213 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <span class="badge badge-primary">
-                    <span class="dot"></span> Independent Mobile Studio
-                </span>
-                <h1>Crafting Polished Mobile Apps &amp; Games</h1>
-                <p class="lead">
-                    We design intuitive Android applications and tactile casual games—combining modern native architecture, responsive controls, and privacy-conscious on-device experiences.
-                </p>
-                <div class="hero-actions">
-                    <a href="#games" class="btn btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                        Browse Games
-                    </a>
-                    <a href="#apps" class="btn btn-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                        </svg>
-                        Browse Apps
-                    </a>
-                    <a href="#desktop-apps" class="btn btn-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                        Desktop Apps
-                    </a>
-                </div>
-            </div>
+            <h1 class="sr-only">Silverbyte Studio: Polished Mobile Apps &amp; Games</h1>
+            <a href="#games" class="hero-banner" aria-label="Silverbyte Studio - Polished Mobile Apps &amp; Games Developer Portal, explore portfolio">
+                <svg class="hero-banner-svg" viewBox="0 0 1200 675" width="1200" height="675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silverbyte Studio - Polished Mobile Apps &amp; Games Developer Portal">
+                    <defs>
+                        <!-- Matte surface gradients (warm off-white stone & alabaster) -->
+                        <linearGradient id="matBase" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F8F7F3"/>
+                            <stop offset="45%" stop-color="#F2EFE8"/>
+                            <stop offset="100%" stop-color="#E8E4DA"/>
+                        </linearGradient>
+
+                        <linearGradient id="matCardFace" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFFFF"/>
+                            <stop offset="100%" stop-color="#F4F1EA"/>
+                        </linearGradient>
+
+                        <linearGradient id="matSubtleFace" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FAF8F3"/>
+                            <stop offset="100%" stop-color="#EDE9E0"/>
+                        </linearGradient>
+
+                        <linearGradient id="matIsoTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFFFF"/>
+                            <stop offset="100%" stop-color="#F7F5EF"/>
+                        </linearGradient>
+
+                        <linearGradient id="matIsoLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ECE8DF"/>
+                            <stop offset="100%" stop-color="#DFD9CD"/>
+                        </linearGradient>
+
+                        <linearGradient id="matIsoRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#DDD8CB"/>
+                            <stop offset="100%" stop-color="#D0C9BB"/>
+                        </linearGradient>
+
+                        <!-- Subtle matte dot matrix -->
+                        <pattern id="matDotPattern" width="28" height="28" patternUnits="userSpaceOnUse">
+                            <circle cx="14" cy="14" r="1.2" fill="#D3CEBF" opacity="0.55"/>
+                        </pattern>
+
+                        <!-- Subtle matte line grid -->
+                        <pattern id="matGridLines" width="84" height="84" patternUnits="userSpaceOnUse">
+                            <path d="M 84 0 L 0 0 0 84" fill="none" stroke="#E3DED2" stroke-width="0.75" opacity="0.6"/>
+                        </pattern>
+
+                        <!-- Soft matte drop shadows -->
+                        <filter id="matSoftShadow" x="-10%" y="-10%" width="125%" height="130%">
+                            <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#8A8270" flood-opacity="0.18"/>
+                        </filter>
+
+                        <filter id="matTileShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#7A7260" flood-opacity="0.22"/>
+                        </filter>
+
+                        <filter id="matCardShadow" x="-15%" y="-15%" width="130%" height="135%">
+                            <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#8A8270" flood-opacity="0.14"/>
+                        </filter>
+                    </defs>
+
+                    <!-- 1. Background Base -->
+                    <rect width="1200" height="675" fill="url(#matBase)"/>
+
+                    <!-- 2. Matte Architectural Grid & Dots -->
+                    <rect width="1200" height="675" fill="url(#matGridLines)"/>
+                    <rect width="1200" height="675" fill="url(#matDotPattern)"/>
+
+                    <!-- 3. Matte Concentric Rings / Geometry -->
+                    <g opacity="0.55">
+                        <circle cx="600" cy="337" r="300" fill="none" stroke="#DDD7CB" stroke-width="1" stroke-dasharray="3 4"/>
+                        <circle cx="600" cy="337" r="230" fill="none" stroke="#D3CDC0" stroke-width="1.2"/>
+                        <circle cx="600" cy="337" r="160" fill="none" stroke="#DDD7CB" stroke-width="1" stroke-dasharray="2 3"/>
+                        <circle cx="600" cy="337" r="90" fill="none" stroke="#DDD7CB" stroke-width="0.75"/>
+                    </g>
+
+                    <!-- 4. Frame & Corner Precision Markers -->
+                    <rect x="24" y="24" width="1152" height="627" rx="14" fill="none" stroke="#D8D2C5" stroke-width="1.2" opacity="0.8"/>
+                    <rect x="36" y="36" width="1128" height="603" rx="10" fill="none" stroke="#E5E0D4" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.6"/>
+
+                    <!-- Corner Crosshairs / Framing Brackets -->
+                    <g stroke="#9E9788" stroke-width="1.5" opacity="0.6" stroke-linecap="round">
+                        <path d="M 48 64 L 48 48 L 64 48"/>
+                        <path d="M 1152 64 L 1152 48 L 1136 48"/>
+                        <path d="M 48 611 L 48 627 L 64 627"/>
+                        <path d="M 1152 611 L 1152 627 L 1136 627"/>
+                    </g>
+
+                    <!-- 5. Header / Top Labels -->
+                    <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" letter-spacing="2" fill="#756E60">
+                        <text x="72" y="76">PORTAL // B2C COLLECTION</text>
+                        <text x="1128" y="76" text-anchor="end">SYS // VER 2026.1</text>
+                    </g>
+                    <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#999283">
+                        <text x="72" y="96">Independent Mobile Studio</text>
+                        <text x="1128" y="96" text-anchor="end">Privacy-First Architecture</text>
+                    </g>
+
+                    <!-- 6. Left Tactile Satellite Card (Games Feature) -->
+                    <g filter="url(#matCardShadow)">
+                        <rect x="76" y="240" width="220" height="195" rx="14" fill="url(#matSubtleFace)" stroke="#D8D2C4" stroke-width="1.2"/>
+                        <!-- Game Dice / Tiles Icon -->
+                        <g transform="translate(100, 264)" stroke="#756E60" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="0" y="0" width="24" height="24" rx="4" stroke="#756E60" fill="#F4F1EA"/>
+                            <circle cx="7" cy="7" r="1.5" fill="#756E60"/>
+                            <circle cx="17" cy="17" r="1.5" fill="#756E60"/>
+                            <circle cx="12" cy="12" r="1.5" fill="#756E60"/>
+                            <path d="M 28 6 L 36 6 A 2 2 0 0 1 38 8 L 38 24 A 2 2 0 0 1 36 26 L 28 26" stroke="#A8A192"/>
+                        </g>
+                        <text x="100" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#423E35">CASUAL GAMES</text>
+                        <text x="100" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="500" fill="#756E60">Triple Tiles &amp; Fallinko</text>
+                        <text x="100" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#948D7F">Tactile physics &amp; puzzles</text>
+                        <rect x="100" y="394" width="86" height="20" rx="10" fill="#E8E4DA" stroke="#D3CDBC" stroke-width="0.8"/>
+                        <text x="143" y="408" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#5C5648">UNITY 3D</text>
+                    </g>
+
+                    <!-- 7. Right Tactile Satellite Card (Apps Feature) -->
+                    <g filter="url(#matCardShadow)">
+                        <rect x="904" y="240" width="220" height="195" rx="14" fill="url(#matSubtleFace)" stroke="#D8D2C4" stroke-width="1.2"/>
+                        <!-- Phone / Code Icon -->
+                        <g transform="translate(928, 264)" stroke="#756E60" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="0" y="0" width="20" height="30" rx="3" stroke="#756E60" fill="#F4F1EA"/>
+                            <circle cx="10" cy="24" r="1.2" fill="#756E60"/>
+                            <path d="M 6 5 L 14 5" stroke="#A8A192"/>
+                        </g>
+                        <text x="928" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#423E35">NATIVE APPS</text>
+                        <text x="928" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="500" fill="#756E60">Linko, Clipr, Loaney</text>
+                        <text x="928" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#948D7F">100% on-device SQLite</text>
+                        <rect x="928" y="394" width="108" height="20" rx="10" fill="#E8E4DA" stroke="#D3CDBC" stroke-width="0.8"/>
+                        <text x="982" y="408" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#5C5648">COMPOSE / FLUTTER</text>
+                    </g>
+
+                    <!-- 8. Center Main Hero Card -->
+                    <g filter="url(#matSoftShadow)">
+                        <!-- Recessed border underlay -->
+                        <rect x="348" y="128" width="504" height="418" rx="22" fill="#E3DDD1" stroke="#D0C9BA" stroke-width="1.5"/>
+                        <!-- Main card face -->
+                        <rect x="352" y="132" width="496" height="410" rx="18" fill="url(#matCardFace)" stroke="#EBE6DC" stroke-width="1.5"/>
+                        <rect x="364" y="144" width="472" height="386" rx="14" fill="none" stroke="#ECE7DD" stroke-width="1" stroke-dasharray="4 3"/>
+
+                        <!-- 3D Isometric Tile Stack (Tactile Studio Motif) -->
+                        <g transform="translate(600, 222)" filter="url(#matTileShadow)">
+                            <!-- Base tile -->
+                            <g transform="translate(0, 18)" opacity="0.6">
+                                <polygon points="0,-24 42,0 0,24 -42,0" fill="#D6D0C2" stroke="#BFB9AA" stroke-width="1"/>
+                            </g>
+                            <!-- Middle tile -->
+                            <g transform="translate(0, 9)" opacity="0.85">
+                                <polygon points="0,-24 42,0 0,24 -42,0" fill="#E8E4DA" stroke="#CBC5B6" stroke-width="1"/>
+                                <polygon points="-42,0 0,24 0,33 -42,9" fill="#DFD9CB" stroke="#CBC5B6" stroke-width="1"/>
+                                <polygon points="0,24 42,0 42,9 0,33" fill="#D3CDBE" stroke="#CBC5B6" stroke-width="1"/>
+                            </g>
+                            <!-- Top Hero Isometric Cube / Tile -->
+                            <g transform="translate(0, 0)">
+                                <!-- Top Face -->
+                                <polygon points="0,-26 46,0 0,26 -46,0" fill="url(#matIsoTop)" stroke="#C8C2B2" stroke-width="1.2"/>
+                                <!-- Left Face -->
+                                <polygon points="-46,0 0,26 0,36 -46,10" fill="url(#matIsoLeft)" stroke="#C8C2B2" stroke-width="1.2"/>
+                                <!-- Right Face -->
+                                <polygon points="0,26 46,0 46,10 0,36" fill="url(#matIsoRight)" stroke="#C8C2B2" stroke-width="1.2"/>
+                                <!-- Embossed 'S' Glyph on top facet -->
+                                <path d="M 6 -9 C 6 -13 -6 -13 -6 -6 C -6 2 6 0 6 7 C 6 14 -6 14 -6 10" fill="none" stroke="#756E60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.866 0.5 -0.866 0.5 0 0) scale(0.65)"/>
+                            </g>
+
+                            <!-- Small Orbiting Tactile Cubes -->
+                            <g transform="translate(-86, -10) scale(0.48)">
+                                <polygon points="0,-26 46,0 0,26 -46,0" fill="url(#matIsoTop)" stroke="#C8C2B2" stroke-width="1.5"/>
+                                <polygon points="-46,0 0,26 0,36 -46,10" fill="url(#matIsoLeft)" stroke="#C8C2B2" stroke-width="1.5"/>
+                                <polygon points="0,26 46,0 46,10 0,36" fill="url(#matIsoRight)" stroke="#C8C2B2" stroke-width="1.5"/>
+                            </g>
+                            <g transform="translate(86, 14) scale(0.48)">
+                                <polygon points="0,-26 46,0 0,26 -46,0" fill="url(#matIsoTop)" stroke="#C8C2B2" stroke-width="1.5"/>
+                                <polygon points="-46,0 0,26 0,36 -46,10" fill="url(#matIsoLeft)" stroke="#C8C2B2" stroke-width="1.5"/>
+                                <polygon points="0,26 46,0 46,10 0,36" fill="url(#matIsoRight)" stroke="#C8C2B2" stroke-width="1.5"/>
+                            </g>
+                        </g>
+
+                        <!-- Center Typography -->
+                        <text x="600" y="324" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="5" fill="#2E2B24">SILVERBYTE STUDIO</text>
+                        <text x="600" y="354" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="3.5" fill="#756E60">MOBILE APPS &amp; CASUAL GAMES</text>
+
+                        <!-- Divider Line -->
+                        <line x1="480" y1="378" x2="720" y2="378" stroke="#DCD6C9" stroke-width="1.2"/>
+
+                        <text x="600" y="408" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#696254">
+                            Tactile puzzles, native utilities &amp; offline software
+                        </text>
+
+                        <!-- Matte Status Pill / Tag -->
+                        <g transform="translate(600, 452)">
+                            <rect x="-125" y="-15" width="250" height="30" rx="15" fill="#ECE7DE" stroke="#D3CDBC" stroke-width="1.2"/>
+                            <circle cx="-102" cy="0" r="3.5" fill="#756E60"/>
+                            <text x="-90" y="4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="700" letter-spacing="1.5" fill="#423E35">OFFICIAL B2C REPOSITORY</text>
+                        </g>
+
+                        <!-- Interactive hint -->
+                        <text x="600" y="504" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#8C8576">
+                            CLICK TO EXPLORE PORTFOLIO ↓
+                        </text>
+                    </g>
+
+                    <!-- 9. Footer / Bottom Labels -->
+                    <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600" letter-spacing="2" fill="#756E60">
+                        <text x="72" y="608">FEATURED : TRIPLE TILES • FALLINKO • LINKO • CLIPR • LOANEY • PROMPTER</text>
+                        <text x="1128" y="608" text-anchor="end">SCROLL FOR GAMES &amp; APPS ↓</text>
+                    </g>
+                </svg>
+            </a>
         </div>
     </section>
 
@@ -182,7 +364,7 @@
 
             <div class="portal-showcase-grid">
                 <!-- Game 1: Triple Tiles -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/triple-tiles-banner.jpg" alt="Triple Tiles: Face Match Puzzle" loading="lazy">
                     </div>
@@ -221,7 +403,7 @@
                 </article>
 
                 <!-- Game 2: Fallinko -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-body" style="padding-top: 2rem;">
                         <div class="portal-card-header">
                             <img src="assets/images/fallinko-icon.png" alt="Fallinko Icon" class="portal-card-icon" width="54" height="54">
@@ -259,7 +441,7 @@
 
             <div class="portal-showcase-grid">
                 <!-- App 1: GIF Maker -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/gif-maker-banner.jpg" alt="GIF Maker: Video to GIF" loading="lazy">
                     </div>
@@ -298,7 +480,7 @@
                 </article>
 
                 <!-- App 2: Clipr -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/clipr-banner.jpg" alt="Clipr: Quick Video Tools" loading="lazy">
                     </div>
@@ -334,7 +516,7 @@
                 </article>
 
                 <!-- App 3: Loaney -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/loaney-banner.jpg" alt="Loaney: Debt & Loan Tracker" loading="lazy">
                     </div>
@@ -370,7 +552,7 @@
                 </article>
 
                 <!-- App 4: Linko -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/linko-banner.jpg" alt="Linko: Bookmark & Link Manager" loading="lazy">
                     </div>
@@ -406,7 +588,7 @@
                 </article>
 
                 <!-- App 5: Prompter -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/prompter-banner.jpg" alt="Prompter: AI Prompt Manager" loading="lazy">
                     </div>
@@ -455,7 +637,7 @@
 
             <div class="portal-showcase-grid">
                 <!-- Desktop App 1: Video Downloader -->
-                <article class="portal-card">
+                <article class="portal-card" data-audience="b2c">
                     <div class="portal-card-banner">
                         <img src="assets/images/video-downloader-banner.jpg" alt="Video Downloader" loading="lazy">
                     </div>
@@ -606,6 +788,7 @@
                     <li><a href="#apps">Apps</a></li>
                     <li><a href="#desktop-apps">Desktop</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="business.html">For Business (B2B)</a></li>
                     <li><a href="triple-tiles.html">Triple Tiles</a></li>
                     <li><a href="fallinko.html">Fallinko</a></li>
                     <li><a href="gif-maker.html">GIF Maker</a></li>
