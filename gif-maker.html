@@ -27,7 +27,11 @@
     <meta name="twitter:image" content="https://silverbytegames.github.io/assets/images/gif-maker-banner.jpg">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
+    <!-- Fonts: Geist + Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.9">
 
     <!-- Schema.org MobileApplication JSON-LD -->
     <script type="application/ld+json">
@@ -57,81 +61,138 @@
     <!-- Site Header & Navigation -->
     <header class="site-header">
         <div class="container">
-            <nav class="navbar" aria-label="Main Navigation">
-                <div class="navbar-start">
-                    <a href="index.html" class="brand-link" aria-label="Silverbyte Studio Home">
-                        <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" class="brand-logo" width="36" height="36">
-                        <span class="brand-title">Silverbyte Studio</span>
-                    </a>
-                    <nav class="audience-switch header-audience" aria-label="Project category">
-                        <a href="index.html" class="audience-option active" aria-current="page">B2C</a>
-                        <a href="business.html" class="audience-option">B2B</a>
-                    </nav>
-                </div>
+            <nav class="site-nav" aria-label="Main">
+                <a href="index.html" class="brand-link" aria-label="Silverbyte Studio home">
+                    <img src="assets/images/studio-logo.png" alt="" class="brand-logo" width="32" height="32">
+                    <span class="brand-title">Silverbyte Studio</span>
+                </a>
 
-                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
+                <button type="button" class="nav-toggle" aria-controls="site-menu" aria-expanded="false" aria-label="Open menu">
+                    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
 
-                <ul class="nav-links">
-                    <li><a href="index.html#games" class="nav-link">Games</a></li>
-                    <li><a href="index.html#apps" class="nav-link active">Apps</a></li>
-                    <li><a href="index.html#desktop-apps" class="nav-link">Desktop</a></li>
-                    <li><a href="index.html#about" class="nav-link">About</a></li>
-                    <li><a href="index.html#support" class="nav-link">Support</a></li>
-                    <li><a href="business.html" class="nav-link">For Business</a></li>
-                    <li class="nav-dropdown">
-                        <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-                            <span>Privacy Policies</span>
-                            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
+                <div class="nav-menu" id="site-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                        <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="nav-panel-games">
+                            <span>Games</span><svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
-                        <div class="dropdown-menu" role="menu">
-                            <a href="loaney-privacy-policy.html" class="dropdown-item" role="menuitem">
-                                <div class="dropdown-item-icon">
-                                    <img src="assets/images/loaney-icon.png" alt="Loaney" width="22" height="22">
+                            <div class="nav-panel" id="nav-panel-games">
+                                <div class="nav-panel-body">
+                                    <div class="nav-group">
+                                        <p class="nav-group-label">Mobile games</p>
+                                    <a href="triple-tiles.html" class="nav-card">
+                                        <img src="assets/images/triple-tiles-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Triple Tiles</span>
+                                            <span class="nav-card-desc">Face-matching tile puzzle</span>
+                                        </span>
+                                    </a>
+                                    <a href="fallinko.html" class="nav-card">
+                                        <img src="assets/images/fallinko-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Fallinko <span class="nav-pill">Soon</span></span>
+                                            <span class="nav-card-desc">Physics drop &amp; score arcade</span>
+                                        </span>
+                                    </a>
+                                    </div>
                                 </div>
-                                <div class="dropdown-item-text">
-                                    <span class="dropdown-item-title">Loaney Privacy Policy</span>
-                                    <span class="dropdown-item-desc">Personal Debt &amp; Loan Tracker</span>
+                                <a href="index.html#games" class="nav-panel-footer">See all games <span aria-hidden="true">&rarr;</span></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                        <button type="button" class="nav-trigger is-current" aria-expanded="false" aria-controls="nav-panel-apps">
+                            <span>Apps</span><svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                            <div class="nav-panel nav-panel-wide" id="nav-panel-apps">
+                                <div class="nav-panel-body">
+                                    <div class="nav-group">
+                                        <p class="nav-group-label">Mobile apps</p>
+                                    <a href="gif-maker.html" class="nav-card" aria-current="page">
+                                        <img src="assets/images/gif-maker-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">GIF Maker</span>
+                                            <span class="nav-card-desc">Turn videos into GIFs</span>
+                                        </span>
+                                    </a>
+                                    <a href="clipr.html" class="nav-card">
+                                        <img src="assets/images/clipr-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Clipr</span>
+                                            <span class="nav-card-desc">Quick video editing tools</span>
+                                        </span>
+                                    </a>
+                                    <a href="loaney.html" class="nav-card">
+                                        <img src="assets/images/loaney-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Loaney</span>
+                                            <span class="nav-card-desc">Track loans &amp; debts</span>
+                                        </span>
+                                    </a>
+                                    <a href="linko.html" class="nav-card">
+                                        <img src="assets/images/linko-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Linko</span>
+                                            <span class="nav-card-desc">Save &amp; organize links</span>
+                                        </span>
+                                    </a>
+                                    <a href="prompter.html" class="nav-card">
+                                        <img src="assets/images/prompter-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Prompter</span>
+                                            <span class="nav-card-desc">Organize your AI prompts</span>
+                                        </span>
+                                    </a>
+                                    </div>
+                                    <div class="nav-group">
+                                        <p class="nav-group-label">Desktop apps</p>
+                                    <a href="video-downloader.html" class="nav-card">
+                                        <img src="assets/images/video-downloader-icon.png" alt="" width="36" height="36" loading="lazy">
+                                        <span class="nav-card-text">
+                                            <span class="nav-card-title">Video Downloader</span>
+                                            <span class="nav-card-desc">Save videos &amp; audio on Windows</span>
+                                        </span>
+                                    </a>
+                                    </div>
                                 </div>
-                            </a>
-                            <a href="gif-maker-privacy-policy.html" class="dropdown-item" role="menuitem">
-                                <div class="dropdown-item-icon">
-                                    <img src="assets/images/gif-maker-icon.png" alt="GIF Maker" width="22" height="22">
+                                <a href="index.html#apps" class="nav-panel-footer">See all apps <span aria-hidden="true">&rarr;</span></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#about" class="nav-trigger">About</a>
+                        </li>
+                        <li class="nav-item">
+                        <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="nav-panel-support">
+                            <span>Support</span><svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                            <div class="nav-panel nav-panel-end" id="nav-panel-support">
+                                <div class="nav-panel-body">
+                                    <div class="nav-group">
+                                        <p class="nav-group-label">Get help</p>
+                                        <a href="index.html#support" class="nav-card nav-card-plain">
+                                            <span class="nav-card-text">
+                                                <span class="nav-card-title">Contact support</span>
+                                                <span class="nav-card-desc">Questions, bugs or feedback on any app or game</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="nav-group">
+                                        <p class="nav-group-label">Legal</p>
+                                        <ul class="nav-text-list">
+                                        <li><a href="terms.html" class="nav-text-link">Terms of Service</a></li>
+                                        <li><a href="privacy-policy.html" class="nav-text-link">Privacy: Games</a></li>
+                                        <li><a href="gif-maker-privacy-policy.html" class="nav-text-link">Privacy: GIF Maker</a></li>
+                                        <li><a href="clipr-privacy-policy.html" class="nav-text-link">Privacy: Clipr</a></li>
+                                        <li><a href="loaney-privacy-policy.html" class="nav-text-link">Privacy: Loaney</a></li>
+                                        <li><a href="linko-privacy-policy.html" class="nav-text-link">Privacy: Linko</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="dropdown-item-text">
-                                    <span class="dropdown-item-title">GIF Maker Privacy Policy</span>
-                                    <span class="dropdown-item-desc">Video to GIF &amp; Offline Conversion</span>
-                                </div>
-                            </a>
-                            <a href="clipr-privacy-policy.html" class="dropdown-item" role="menuitem">
-                                <div class="dropdown-item-icon">
-                                    <img src="assets/images/clipr-icon.png" alt="Clipr" width="22" height="22">
-                                </div>
-                                <div class="dropdown-item-text">
-                                    <span class="dropdown-item-title">Clipr Privacy Policy</span>
-                                    <span class="dropdown-item-desc">Video Tools &amp; Local Processing</span>
-                                </div>
-                            </a>
-                            <a href="privacy-policy.html" class="dropdown-item" role="menuitem">
-                                <div class="dropdown-item-icon">
-                                    <img src="assets/images/triple-tiles-icon.png" alt="Triple Tiles" width="22" height="22">
-                                </div>
-                                <div class="dropdown-item-text">
-                                    <span class="dropdown-item-title">Games Privacy Policy</span>
-                                    <span class="dropdown-item-desc">Triple Tiles: Face Match Puzzle</span>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li><a href="terms.html" class="nav-link">Terms</a></li>
-                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="business.html" class="nav-cta">For Business</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -322,7 +383,7 @@
                 </div>
                 <div class="specs-row">
                     <span class="specs-label">Privacy Policy</span>
-                    <span class="specs-value"><a href="gif-maker-privacy-policy.html" style="color: var(--primary); text-decoration: underline;">Read GIF Maker Privacy Policy</a></span>
+                    <span class="specs-value"><a href="gif-maker-privacy-policy.html" class="link-inline">Read GIF Maker Privacy Policy</a></span>
                 </div>
             </div>
         </section>
@@ -334,7 +395,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" width="28" height="28" style="border-radius: 4px;">
+                    <img src="assets/images/studio-logo.png" alt="Silverbyte Studio Logo" width="28" height="28" class="footer-logo">
                     <span>Silverbyte Studio</span>
                 </div>
                 <ul class="footer-links">
@@ -365,6 +426,6 @@
     </footer>
 
     <!-- Script -->
-    <script src="assets/js/main.js?v=1.1"></script>
+    <script src="assets/js/main.js?v=1.2"></script>
 </body>
 </html>
